@@ -53,8 +53,7 @@ read10xMultiome <- function(
     compressed = NULL,
     annotation=FALSE,
     fragpath=NULL,
-    reference=c("RNA", "ATAC"),
-    BPPARAM = SerialParam() )
+    reference=c("RNA", "ATAC"))
 {
     type <- match.arg(type)
     data <- match.arg(data)
