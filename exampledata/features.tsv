@@ -1,0 +1,100 @@
+ENSG00001	GENE1	Gene Expression	chr1	1	101
+ENSG00002	GENE2	Gene Expression	chr1	2	102
+ENSG00003	GENE3	Gene Expression	chr1	3	103
+ENSG00004	GENE4	Gene Expression	chr1	4	104
+ENSG00005	GENE5	Gene Expression	chr1	5	105
+ENSG00006	GENE6	Gene Expression	chr1	6	106
+ENSG00007	GENE7	Gene Expression	chr1	7	107
+ENSG00008	GENE8	Gene Expression	chr1	8	108
+ENSG00009	GENE9	Gene Expression	chr1	9	109
+ENSG000010	GENE10	Gene Expression	chr1	10	110
+ENSG000011	GENE11	Gene Expression	chr1	11	111
+ENSG000012	GENE12	Gene Expression	chr1	12	112
+ENSG000013	GENE13	Gene Expression	chr1	13	113
+ENSG000014	GENE14	Gene Expression	chr1	14	114
+ENSG000015	GENE15	Gene Expression	chr1	15	115
+ENSG000016	GENE16	Gene Expression	chr1	16	116
+ENSG000017	GENE17	Gene Expression	chr1	17	117
+ENSG000018	GENE18	Gene Expression	chr1	18	118
+ENSG000019	GENE19	Gene Expression	chr1	19	119
+ENSG000020	GENE20	Gene Expression	chr1	20	120
+ENSG000021	GENE21	Gene Expression	chr1	21	121
+ENSG000022	GENE22	Gene Expression	chr1	22	122
+ENSG000023	GENE23	Gene Expression	chr1	23	123
+ENSG000024	GENE24	Gene Expression	chr1	24	124
+ENSG000025	GENE25	Gene Expression	chr1	25	125
+ENSG000026	GENE26	Gene Expression	chr1	26	126
+ENSG000027	GENE27	Gene Expression	chr1	27	127
+ENSG000028	GENE28	Gene Expression	chr1	28	128
+ENSG000029	GENE29	Gene Expression	chr1	29	129
+ENSG000030	GENE30	Gene Expression	chr1	30	130
+ENSG000031	GENE31	Gene Expression	chr1	31	131
+ENSG000032	GENE32	Gene Expression	chr1	32	132
+ENSG000033	GENE33	Gene Expression	chr1	33	133
+ENSG000034	GENE34	Gene Expression	chr1	34	134
+ENSG000035	GENE35	Gene Expression	chr1	35	135
+ENSG000036	GENE36	Gene Expression	chr1	36	136
+ENSG000037	GENE37	Gene Expression	chr1	37	137
+ENSG000038	GENE38	Gene Expression	chr1	38	138
+ENSG000039	GENE39	Gene Expression	chr1	39	139
+ENSG000040	GENE40	Gene Expression	chr1	40	140
+ENSG000041	GENE41	Gene Expression	chr1	41	141
+ENSG000042	GENE42	Gene Expression	chr1	42	142
+ENSG000043	GENE43	Gene Expression	chr1	43	143
+ENSG000044	GENE44	Gene Expression	chr1	44	144
+ENSG000045	GENE45	Gene Expression	chr1	45	145
+ENSG000046	GENE46	Gene Expression	chr1	46	146
+ENSG000047	GENE47	Gene Expression	chr1	47	147
+ENSG000048	GENE48	Gene Expression	chr1	48	148
+ENSG000049	GENE49	Gene Expression	chr1	49	149
+ENSG000050	GENE50	Gene Expression	chr1	50	150
+chr1:1-101	chr1:1-101	Peaks	chr1	1	101
+chr1:2-102	chr1:2-102	Peaks	chr1	2	102
+chr1:3-103	chr1:3-103	Peaks	chr1	3	103
+chr1:4-104	chr1:4-104	Peaks	chr1	4	104
+chr1:5-105	chr1:5-105	Peaks	chr1	5	105
+chr1:6-106	chr1:6-106	Peaks	chr1	6	106
+chr1:7-107	chr1:7-107	Peaks	chr1	7	107
+chr1:8-108	chr1:8-108	Peaks	chr1	8	108
+chr1:9-109	chr1:9-109	Peaks	chr1	9	109
+chr1:10-110	chr1:10-110	Peaks	chr1	10	110
+chr1:11-111	chr1:11-111	Peaks	chr1	11	111
+chr1:12-112	chr1:12-112	Peaks	chr1	12	112
+chr1:13-113	chr1:13-113	Peaks	chr1	13	113
+chr1:14-114	chr1:14-114	Peaks	chr1	14	114
+chr1:15-115	chr1:15-115	Peaks	chr1	15	115
+chr1:16-116	chr1:16-116	Peaks	chr1	16	116
+chr1:17-117	chr1:17-117	Peaks	chr1	17	117
+chr1:18-118	chr1:18-118	Peaks	chr1	18	118
+chr1:19-119	chr1:19-119	Peaks	chr1	19	119
+chr1:20-120	chr1:20-120	Peaks	chr1	20	120
+chr1:21-121	chr1:21-121	Peaks	chr1	21	121
+chr1:22-122	chr1:22-122	Peaks	chr1	22	122
+chr1:23-123	chr1:23-123	Peaks	chr1	23	123
+chr1:24-124	chr1:24-124	Peaks	chr1	24	124
+chr1:25-125	chr1:25-125	Peaks	chr1	25	125
+chr1:26-126	chr1:26-126	Peaks	chr1	26	126
+chr1:27-127	chr1:27-127	Peaks	chr1	27	127
+chr1:28-128	chr1:28-128	Peaks	chr1	28	128
+chr1:29-129	chr1:29-129	Peaks	chr1	29	129
+chr1:30-130	chr1:30-130	Peaks	chr1	30	130
+chr1:31-131	chr1:31-131	Peaks	chr1	31	131
+chr1:32-132	chr1:32-132	Peaks	chr1	32	132
+chr1:33-133	chr1:33-133	Peaks	chr1	33	133
+chr1:34-134	chr1:34-134	Peaks	chr1	34	134
+chr1:35-135	chr1:35-135	Peaks	chr1	35	135
+chr1:36-136	chr1:36-136	Peaks	chr1	36	136
+chr1:37-137	chr1:37-137	Peaks	chr1	37	137
+chr1:38-138	chr1:38-138	Peaks	chr1	38	138
+chr1:39-139	chr1:39-139	Peaks	chr1	39	139
+chr1:40-140	chr1:40-140	Peaks	chr1	40	140
+chr1:41-141	chr1:41-141	Peaks	chr1	41	141
+chr1:42-142	chr1:42-142	Peaks	chr1	42	142
+chr1:43-143	chr1:43-143	Peaks	chr1	43	143
+chr1:44-144	chr1:44-144	Peaks	chr1	44	144
+chr1:45-145	chr1:45-145	Peaks	chr1	45	145
+chr1:46-146	chr1:46-146	Peaks	chr1	46	146
+chr1:47-147	chr1:47-147	Peaks	chr1	47	147
+chr1:48-148	chr1:48-148	Peaks	chr1	48	148
+chr1:49-149	chr1:49-149	Peaks	chr1	49	149
+chr1:50-150	chr1:50-150	Peaks	chr1	50	150
