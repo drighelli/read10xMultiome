@@ -3,20 +3,23 @@
 #' @description Creates a \linkS4class{SingleCellExperiment} from the CellRanger 
 #' ARC output directories for 10X Genomics data.
 #' 
-#' @param sampleoutspath string indicating the path to the experiment outs data.
+#' @param sample.spath string indicating the path to the experiment outs data.
 #' If type is sparse, it must indicate the path where the sparse data are stored.
 #' If type is HDF5, it must indicate the name of the HDF5 file.
 #' Alternatively, the string may contain a prefix of the name for the three-file 
 #' system described above, where the rest of the name of each file follows 
 #' the standard 10X output. 
 #' (see \link{DropletUtils::read10xCounts} for additional information)
+#' @param sample.name the name of the sample, when NULL is the root of the 
+#' sample.path (default is NULL)
 #' @param type String specifying the type of 10X format to read data from.
 #' @param compressed Logical scalar indicating whether the text files are 
 #' compressed for type="sparse" or "prefix".
+#' @param col.names logical indicating if to add ID to the cols of the assays.
 #' @param annotation boolean specifying if to load the 10x peak annotations 
-#' NB this process is very slow
-#' @param fragments string indicating the path to the fragments file (optional)
-#' the path will be stored as metadata of the ATAC assay
+#' NB this process is very slow (default FALSE)
+#' @param addfrags boolean indicating to store the fragments file path 
+#' the path will be stored as metadata of the ATAC assay (default FALSE)
 #' @param reference string indicating the main assay to use for the 
 #' SingleCellExperiment object
 #'
@@ -25,6 +28,8 @@
 #' parameter) as \code{altExp} assay.
 #' 
 #' @export
+#' @import SingleCellExperiment
+#' @importFrom S4Vectors cbind.DataFrame
 #' @importFrom DropletUtils read10xCounts
 #' @importFrom rhdf5 h5read
 #' @examples
@@ -47,21 +52,29 @@
 # write10xCounts(tmpdir, my.counts, gene.id=gene.ids, 
 #                gene.symbol=gene.symb, barcodes=cell.ids)
 read10xMultiome <- function(
-    sampleoutspath,
-    type = c("auto", "sparse", "HDF5", "prefix"),
-    data = c("filtered", "raw"),
+    sample.path,
+    sample.name=NULL,
+    type=c("auto", "sparse", "HDF5", "prefix"),
+    data=c("filtered", "raw"),
     compressed = NULL,
+    col.names=FALSE,
     annotation=FALSE,
-    fragpath=NULL,
+    addfrags=FALSE,
     reference=c("RNA", "ATAC"))
 {
     type <- match.arg(type)
     data <- match.arg(data)
     reference <- match.arg(reference)
-    stopifnot ( length(grep("outs", sampleoutspath)) != 0 )
+    if ( length(grep("outs", sample.path)) == 0 )
+    {
+        message(paste0("No \"outs\" folder found, automatically setting",
+            " 10x default outs path"))
+        sample.path <- file.path(sample.path, "outs")
+    }
     filenm <- paste0(data, "_feature_bc_matrix", switch(type, HDF5 = ".h5", ""))
-    filepath <- file.path(sampleoutspath, filenm)
-    sce <- read10xCounts(filepath, type=type, compressed=compressed)
+    filepath <- file.path(sample.path, filenm)
+    sce <- read10xCounts(filepath, sample.names=sample.name,
+        type=type, compressed=compressed, col.names=col.names)
     if ( length(grep("h5", filenm)) != 0 )
     {
         interval <- as.character(h5read(filepath, 
@@ -77,13 +90,24 @@ read10xMultiome <- function(
     rowData(sce)$End <- as.numeric(rowData(sce)$End)
     sce <- splitAltExps(sce, rowData(sce)$Type, ref="Gene Expression")
     altExp(sce) <- .setRowRanges(altExp(sce))
-    altExp(sce) <- .setFragpath(altExp(sce), fragpath)
+    if (addfrags) altExp(sce) <- .setFragpath(altExp(sce), sample.path)
+    if ( is.null(sample.name) ) 
+    {
+        if ( length(grep("outs/filtered_feature_bc_matrix", 
+            colData(sce)$Sample)) != 0 )
+        {
+            colData(sce)$Sample <- gsub("/outs/filtered_feature_bc_matrix", "", 
+                colData(sce)$Sample, fixed=TRUE)
+        }
+    }
     colData(altExp(sce)) <- colData(sce)
+    # print("rownames")
+    # rownames(counts(altExp(sce))) <- rowData(altExp(sce))$ID
     mainExpName(sce) <- "RNA"
     altExpNames(sce) <- "ATAC"
     if (annotation) 
     {
-        annofile <- file.path(sampleoutspath, "atac_peak_annotation.tsv")
+        annofile <- file.path(sample.path, "atac_peak_annotation.tsv")
         anno <- read.table(annofile, sep="\t", header=TRUE)
         anno <- .processAnnotations(anno)
         map <- match(rowRanges(altExp(sce))$ID, paste0(anno$chrom, ":", 
@@ -94,7 +118,7 @@ read10xMultiome <- function(
         mcols(rowRanges(altExp(sce)))$distance <- anno$distance[map]
         mcols(rowRanges(altExp(sce)))$peak_type <- anno$peak_type[map]
     }
-    if (reference == "ATAC") sce <- swapAltExp(sce, "ATAC")
+    if (reference == "ATAC") sce <- swapAltExp(sce, "ATAC", withColData=FALSE)
 
     return(sce)
 }
@@ -123,9 +147,9 @@ read10xMultiome <- function(
     return(anno1)
 }
 
-.setFragpath <- function(sce, fragpath)
+.setFragpath <- function(sce, sample.path)
 {
-    if( !is.null(fragpath) ) metadata(sce)$fragpath <- fragpath 
+    metadata(sce)$fragpath <- file.path(sample.path, "atac_fragments.tsv.gz")
     return(sce)
 }
 
